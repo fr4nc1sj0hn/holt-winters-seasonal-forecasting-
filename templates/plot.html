@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+   <head>
+      <style>
+      .center {
+        margin: auto;
+        width: 60%;
+        text-align: center;
+      }
+      .text {
+         font-size: medium;
+         font-feature-settings: "kern","liga";
+         font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+         font-weight: 300;
+         letter-spacing: -.01em;
+         margin-left: 100px;
+         margin-right: 100px;
+         margin-top: 20px;
+         margin-bottom: 20px;   
+         text-align: center;  
+      }
+      </style>
+   </head>
+   <body>
+      <div class="text">
+         <p>Let's first summarize the data into monthly totals so we can forecast on the same scale e.g. 24 months. After summarizing and plotting the result, here is the Actual Monthly Sales</p>
+      </div>
+      <div class="center">
+         <img src="/original.png" alt="Original Data">
+      </div>
+      <div class="text">
+         <p>Let's remove outliers first. Outliers from both deductions and sales amount will be removed. We'll remove records that outside 3-standard deviations from the mean. These are records that have Z-Scores >= 3.</p>
+         <p>After removing the outliers, here is the new plot.</p>
+      </div>
+      <div class="center">
+         <img src="/NoOutliers.png" alt="No Outliers">
+      </div>
+      <div class="text">
+         <p>Next, let's try to decompose the data into it's corresponding components: Trend, Seasonality and Residuals to see if we can approximate stationarity</p>
+      </div>
+      <div class="center">
+         <img src="/decompose.png" alt="decompose">
+      </div>
+      <div class="text">
+         <p>We can also plot the rolling mean and standard deviation to check for stationarity</p>
+      </div>
+      <div class="center">
+         <img src="/rolling.png" alt="decompose">
+      </div>
+      <div class="text">
+         <p>We can easily see that the data contains both trend and seasonality and the residuals can be treated as stationary for the purpose of this exercise. We can fit in a <strong>HWES3</strong> to see how it looks</p>
+      </div>
+      <div class="center">
+         <img src="/HWES3.png" alt="HWES3">
+      </div>
+      <div class="text">
+         <p>We are now ready to perform forecasting but we need to train our model first. We first need to split our data to training and testing and have our model forecast upto 24 months. We'll use <strong>HWES3</strong></p>
+      </div>
+      <div class="center">
+         <img src="/forecast.png" alt="forecast">
+      </div>
+      <div class="text">
+         <p>This model can be improved by more feature engineering and using the other given information.</p>
+      </div>
+   </body>
+</html>

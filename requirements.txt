@@ -1,0 +1,5 @@
+Flask==2.0.2
+matplotlib
+pandas
+statsmodels
+scikit-learn
